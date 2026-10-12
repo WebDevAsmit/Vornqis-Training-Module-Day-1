@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VORNQIS RESEARCH & INSIGHTS — Day 1 Training</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2d;--panel2:#12243a;--text:#f4f7fb;--muted:#9fb0c5;--a:#38bdf8;--b:#8b5cf6;--g:#22c55e;--r:#ef4444;--border:#20344d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 10% 0%,rgba(56,189,248,.13),transparent 32%),radial-gradient(circle at 90% 10%,rgba(139,92,246,.13),transparent 30%),var(--bg);color:var(--text)}
+button{font:inherit}.top{position:fixed;z-index:50;top:0;left:0;right:0;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(7,17,31,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.brand{margin:0;font-size:22px;font-weight:900;letter-spacing:.3px;line-height:1}.brand span{color:var(--a)}.nav{display:flex;gap:8px}.nav button,.secondary{border:1px solid var(--border);background:var(--panel);color:var(--text);padding:10px 14px;border-radius:11px;cursor:pointer}.nav .active{background:linear-gradient(135deg,var(--b),var(--a));border-color:transparent}
+main{padding-top:70px}.section{min-height:100vh;padding:50px 7vw;display:flex;align-items:center;justify-content:center}.deck{width:min(1120px,100%)}.slide{display:none;min-height:72vh;align-items:center}.slide.active{display:flex;animation:fade .3s ease}@keyframes fade{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{width:100%;background:linear-gradient(135deg,rgba(56,189,248,.10),rgba(139,92,246,.12));border:1px solid var(--border);border-radius:28px;padding:48px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.kicker{text-transform:uppercase;letter-spacing:2px;color:var(--a);font-size:12px;font-weight:850}h1.title{font-size:clamp(40px,6vw,74px);line-height:1.02;margin:14px 0 18px}h2{font-size:clamp(30px,4vw,48px);margin:0 0 18px}h3{margin:0 0 9px}p,li{color:var(--muted);font-size:16px;line-height:1.65}.subtitle{font-size:20px;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:25px}.card{background:rgba(13,27,45,.9);border:1px solid var(--border);border-radius:18px;padding:22px}.icon{font-size:29px;margin-bottom:8px}.pill{display:inline-flex;padding:7px 11px;border:1px solid var(--border);border-radius:99px;color:var(--muted);font-size:12px}
+.controls{display:flex;align-items:center;gap:14px;margin-top:22px}.progress{height:6px;background:#1a2b40;border-radius:99px;overflow:hidden;flex:1}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b),var(--a))}
+.primary{border:0;background:linear-gradient(135deg,var(--b),var(--a));color:#fff;padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:800}
+table{width:100%;border-collapse:collapse;margin-top:18px}.scroll{overflow:auto;border:1px solid var(--border);border-radius:14px}th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left;color:var(--muted);white-space:nowrap}th{color:var(--text)}
+.quiz{width:min(980px,100%)}.qcard{background:rgba(13,27,45,.96);border:1px solid var(--border);border-radius:24px;padding:34px}.qtop{display:flex;justify-content:space-between;align-items:center;gap:12px}.qnum{color:var(--a);font-weight:850}.options{display:grid;gap:12px;margin-top:24px}.option{width:100%;text-align:left;padding:16px 18px;border:1px solid var(--border);background:#0b1728;color:var(--text);border-radius:14px;cursor:pointer}.option:hover{border-color:var(--a)}.option.correct{border-color:var(--g);background:rgba(34,197,94,.12)}.option.wrong{border-color:var(--r);background:rgba(239,68,68,.12)}.feedback{min-height:28px;margin-top:15px;font-weight:750}.ok{color:var(--g)}.bad{color:#fca5a5}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}.result{text-align:center;padding:38px}.score{font-size:76px;font-weight:900;background:linear-gradient(90deg,var(--a),#c084fc);-webkit-background-clip:text;color:transparent;margin:8px 0}.badge{display:inline-block;padding:9px 14px;border:1px solid var(--border);border-radius:99px;background:#14253a}.footer{text-align:center;padding:28px;border-top:1px solid var(--border);color:#71839a}
+.nameGateInput{width:100%;max-width:360px;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:#0b1728;color:var(--text);font-size:16px;margin:18px auto;display:block}
+.attemptGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:24px;text-align:left}
+.attemptGrid .card b{color:var(--a)}
+@media(max-width:720px){.top{padding:0 14px}.nav button{display:none}.section{padding:30px 16px}.hero,.qcard{padding:25px}.grid{grid-template-columns:1fr}p,li{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="top"><h1 class="brand">Vornqis <span>Research & Insights</span> · Day 1</h1>
+<div class="nav"><button id="pbtn" class="active" onclick="mode('presentation')">Presentation</button><button id="qbtn" onclick="mode('quiz')">Knowledge Check</button></div></header>
+
+<main>
+<section id="presentation" class="section"><div class="deck">
+
+<article class="slide active"><div class="hero"><div class="kicker">Day 1 Training</div><h1 class="title">Master the Art of<br>Survey Excellence</h1><p class="subtitle">A focused training session covering survey purpose, workflow, key terms, testing essentials, status codes, question types, B2B/B2C, healthcare, quality standards and world knowledge.</p><div style="margin-top:24px"><span class="pill">Vornqis Research & Insights</span> <span class="pill">Day 1</span></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">01 · Why We Survey</div><h2>Our Testing Purpose</h2><div class="grid"><div class="card"><div class="icon">💡</div><h3>The Simple Truth</h3><p>Our role is to test surveys on behalf of the client. The client provides quotas, and we check whether the survey works correctly before real respondents take it.</p></div><div class="card"><div class="icon">🔍</div><h3>What We Check</h3><p>Survey loading, completes (Status 6), terminates (Status 7), quota behavior and unexpected errors.</p></div><div class="card"><div class="icon">📋</div><h3>What the Client Gives</h3><p>Quota targets such as age, gender and location. Always follow the latest client requirements.</p></div><div class="card"><div class="icon">⚠️</div><h3>Error Reporting</h3><p>Broken links or incorrect behavior should be reported promptly through the approved error-reporting process.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">02 · Workflow</div><h2>Step-by-Step Survey Testing</h2><div class="grid"><div class="card"><b>1 · Client sends quota</b><p>Review the survey link and required target group.</p></div><div class="card"><b>2 · We test the survey</b><p>Use the required approved test environment and check expected outcomes.</p></div><div class="card"><b>3 · Error found?</b><p>Record the survey link, error type and observed behavior.</p></div><div class="card"><b>4 · Senior escalation</b><p>Senior team members review and escalate confirmed issues to the client.</p></div><div class="card"><b>5 · Survey confirmed</b><p>Once verified, the survey can be considered ready for launch.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">03 · Basics</div><h2>What Is a Survey?</h2><div class="grid"><div class="card"><h3>📝 Definition</h3><p>A structured method of collecting feedback, opinions or data from respondents about specific topics, products, services or experiences.</p></div><div class="card"><h3>🎯 Purpose</h3><p>Surveys help organizations make data-driven decisions by understanding what people think, feel and experience.</p></div><div class="card"><h3>🧭 Who Takes Surveys?</h3><p>Consumers, professionals, patients, caregivers and other people who fit the client's target criteria.</p></div><div class="card"><h3>🔑 Your Role</h3><p>You act as a survey tester, simulating a relevant respondent to verify that the survey behaves as expected.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">04 · Key Terms</div><h2>LOI, IR & Quota</h2><div class="grid"><div class="card"><h3>⏱️ LOI — Length of Interview</h3><p>Estimated time required to complete a survey. The training material specifies that timing starts from the main survey rather than the initial link click.</p></div><div class="card"><h3>📊 IR — Incidence Rate</h3><p>The percentage of people who qualify for a survey. Example: 1,000 start and 300 qualify → IR = 30%.</p></div><div class="card"><h3>🎯 Quota</h3><p>Pre-defined target groups such as age, gender or location. Always use the latest quota update.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">05 · Essentials</div><h2>Before You Start</h2><div class="grid"><div class="card"><h3>🌐 Testing Environment</h3><p>Use only the approved testing setup required by the project. Follow the client's current instructions.</p></div><div class="card"><h3>🔄 Switcher</h3><p>Match the required device/OS mode: Desktop, Mobile or Agnostic.</p></div><div class="card"><h3>🕐 Timezone</h3><p>Check and apply the correct timezone when the project requires it.</p></div><div class="card"><h3>🗺️ ZIP & DMA</h3><p>ZIP targeting may require a specific geographic test area. DMA refers to a specific media market/region.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">06 · Status Codes</div><h2>Understand the Outcome</h2><div class="grid"><div class="card"><h3>6 · ✅ Complete</h3><p>Survey finished successfully.</p></div><div class="card"><h3>7 · ❌ Terminated</h3><p>Respondent did not qualify or was screened out.</p></div><div class="card"><h3>8 · 🔒 Quota Full</h3><p>The target group has already reached its limit.</p></div><div class="card"><h3>10 · ⚡ Security Termination</h3><p>The training material associates this with speeding or suspicious activity.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">07 · Error Reporting</div><h2>When Something Goes Wrong</h2><div class="card"><h3>⚠️ Report promptly</h3><p>If a survey link does not load, behaves unexpectedly or produces an incorrect result, record the survey link, error type and what you observed, then use the approved error-reporting channel.</p></div><div class="grid"><div class="card"><strong>Capture</strong><p>Link · Error type · Exact behavior · Relevant screenshot/details if required.</p></div><div class="card"><strong>Escalate</strong><p>Senior team members can review and communicate confirmed issues to the client.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">08 · Question Types</div><h2>OE vs CE Questions</h2><div class="grid"><div class="card"><h3>✍️ Open-Ended (OE)</h3><p>Free-text responses in your own words. Answers should be clear, relevant and genuine.</p></div><div class="card"><h3>🔘 Closed-Ended (CE)</h3><p>Predefined choices such as multiple-choice options or rating scales. Read all options before selecting.</p></div></div><div class="card" style="margin-top:16px"><strong>Quality principle:</strong> respond truthfully and according to the actual study requirements; do not fabricate experiences or identities.</div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">09 · B2C</div><h2>Business to Consumer Surveys</h2><p>These surveys gather consumer opinions about products or services, focusing on usage, satisfaction and consumer needs.</p><div class="grid"><div class="card"><b>Classification</b><p>Age, gender, location, income and other demographic information.</p></div><div class="card"><b>Main Survey</b><p>Product feedback, usage frequency, comparisons and likelihood of recommendation.</p></div><div class="card"><b>Quality</b><p>Keep answers consistent and logical and read each question carefully.</p></div><div class="card"><b>OE</b><p>Give clear, relevant and genuine opinions when free-text is requested.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">10 · B2B</div><h2>Business to Business Surveys</h2><p>B2B surveys are conducted with professionals and decision-makers within organizations for business strategy, product development or market research.</p><div class="grid"><div class="card">💬 <b>Customer Feedback</b></div><div class="card">📈 <b>Market Research</b></div><div class="card">🏷️ <b>Brand Awareness</b></div><div class="card">🔧 <b>Product Development</b></div><div class="card">👥 <b>Employee Satisfaction</b></div><div class="card">💻 <b>Website/App Usability</b></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">11 · B2B Structure</div><h2>Qualification → Main Survey → Classification</h2><div class="grid"><div class="card"><b>1 · Qualification</b><p>Screen by company size, industry, role and current product usage where required.</p></div><div class="card"><b>2 · Main Survey</b><p>Gather insights on satisfaction, industry trends and product improvement.</p></div><div class="card"><b>3 · Classification</b><p>Capture geography, revenue and decision-making information as required.</p></div><div class="card"><b>Key Difference</b><p>B2B respondents are professionals. Answers should reflect the relevant business context.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">12 · Healthcare</div><h2>Healthcare Survey Groups</h2><div class="grid"><div class="card"><h3>🩺 HCPs</h3><p>Doctors, nurses, administrators and assistants. Topics may include medicines, equipment, procedures and patient outcomes.</p></div><div class="card"><h3>🤝 Patients & Caregivers</h3><p>Personal experiences with medications or treatments, including effectiveness, side effects, quality of life and treatment satisfaction.</p></div></div><div class="card" style="margin-top:16px"><strong>Important:</strong> healthcare research requires extra accuracy. Never fabricate medical information.</div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">13 · Quality</div><h2>Five Quality Check Points</h2><div class="grid"><div class="card">1️⃣ <b>Response Consistency</b><p>Answers should align logically.</p></div><div class="card">2️⃣ <b>No Speeding</b><p>Do not complete surveys unrealistically fast.</p></div><div class="card">3️⃣ <b>No Flat-Lining</b><p>Rating answers should reflect genuine consideration.</p></div><div class="card">4️⃣ <b>Device/Browser Compatibility</b><p>Match client requirements before starting.</p></div><div class="card">5️⃣ <b>QC Questions</b><p>Follow embedded instructions exactly.</p></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">14 · OE Guidelines</div><h2>Writing Great Open-Ended Answers</h2><div class="grid"><div class="card"><h3>✅ DO</h3><ul><li>Be clear, concise and relevant.</li><li>Give genuine opinions.</li><li>Vary sentence structure.</li><li>Add examples or suggestions when appropriate.</li></ul></div><div class="card"><h3>❌ DON'T</h3><ul><li>Leave answers blank or vague.</li><li>Use copied or fabricated responses.</li><li>Overuse punctuation or symbols.</li><li>Repeat identical wording across answers.</li></ul></div></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">15 · Golden Rules</div><h2>Remember These Principles</h2><ol><li>Test according to the client's current requirements.</li><li>Report survey errors through the approved channel.</li><li>Respect LOI, IR and quotas.</li><li>Keep answers consistent and logically possible.</li><li>Read every question and instruction carefully.</li><li>Give genuine, relevant open-ended answers.</li><li>Never fabricate medical, professional or personal information.</li></ol></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">16 · World Knowledge</div><h2>Official vs Native Language</h2><div class="grid"><div class="card"><h3>Official Language</h3><p>A language legally recognized for government administration, courts or education, depending on the country.</p></div><div class="card"><h3>Native Language</h3><p>The language or languages commonly spoken natively by a population. It may differ from an official language.</p></div></div><p style="margin-top:18px">The original Day 1 material includes regional examples across North America, South America, Europe, Asia, Africa, Oceania and the Middle East.</p></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">17 · World Knowledge</div><h2>Selected Country & Language Examples</h2><div class="scroll"><table><tr><th>Country</th><th>Official / Recognized Language(s)</th><th>Main Native Language Example</th></tr><tr><td>Canada</td><td>English & French</td><td>English</td></tr><tr><td>Brazil</td><td>Portuguese</td><td>Portuguese</td></tr><tr><td>United Kingdom</td><td>English</td><td>English</td></tr><tr><td>Germany</td><td>German</td><td>German</td></tr><tr><td>India</td><td>Hindi & English at Union level</td><td>Hindi / many regional languages</td></tr><tr><td>China</td><td>Mandarin Chinese</td><td>Mandarin / regional varieties</td></tr><tr><td>Japan</td><td>Japanese</td><td>Japanese</td></tr><tr><td>Australia</td><td>English is de facto dominant</td><td>English</td></tr><tr><td>UAE</td><td>Arabic</td><td>Arabic / large expat communities</td></tr></table></div></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">18 · Knowledge Check</div><h2>Ready for the Big Quiz?</h2><p>25 questions: <strong>20 survey-training questions + 5 world-knowledge questions.</strong></p><div class="grid"><div class="card"><strong>Instant Feedback</strong><p>See whether your selected option is correct.</p></div><div class="card"><strong>Live Score</strong><p>Track your score while progressing.</p></div><div class="card"><strong>Final Result</strong><p>Get your score and percentage at the end.</p></div><div class="card"><strong>Retry</strong><p>Restart the quiz and improve your result.</p></div></div><button class="primary" style="margin-top:22px" onclick="mode('quiz')">Start Knowledge Check →</button></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">19 · Completion</div><h2>Quality Builds Client Trust</h2><p>Consistent, logical and carefully tested work helps produce reliable research data and supports long-term professional trust.</p></div></article>
+
+<article class="slide"><div class="hero"><div class="kicker">20 · Day 1 Complete</div><h2>You're Ready to Survey Like a Pro 🎉</h2><p>You have covered survey purpose, workflow, LOI & IR, quotas, testing essentials, status codes, OE/CE, B2C, B2B, healthcare, quality standards and world knowledge.</p><button class="primary" style="margin-top:22px" onclick="mode('quiz')">Take the Quiz →</button></div></article>
+
+<div class="controls"><button class="secondary" onclick="prev()">← Prev</button><div class="progress"><i id="bar"></i></div><span id="count" class="pill">1 / 20</span><button class="primary" onclick="next()">Next →</button></div>
+</div></section>
+
+<section id="quiz" class="section" style="display:none"><div class="quiz"><div id="qcard" class="qcard"></div></div></section>
+</main>
+<footer class="footer">Vornqis Research & Insights · Day 1 Training · Learning & Knowledge Check</footer>
+
+<script>
+const qs=[
+["What is the main purpose of survey testing?",["To entertain respondents","To verify that a client's survey works correctly before real respondents take it","To increase survey length","To replace the client"],1],
+["What does Status 6 mean?",["Terminated","Quota full","Complete","Security termination"],2],
+["What does Status 7 mean?",["Complete","Terminated / screened out","Quota full","Survey paused"],1],
+["What does Status 8 mean?",["Quota full","Complete","Speeding","Open-ended issue"],0],
+["According to the Day 1 training, what is associated with Status 10?",["Successful completion","Speeding / security termination","Quota full","Demographic classification"],1],
+["What does LOI stand for?",["Level of Interview","Length of Interview","Limit of Incidence","Location of Interview"],1],
+["If 1,000 people start a survey and 300 qualify, what is the IR?",["3%","13%","30%","70%"],2],
+["What is a quota?",["A random password","A pre-defined target group such as age, gender or location","A survey error","A type of open-ended question"],1],
+["Which is an Open-Ended (OE) question?",["Select your age group","Rate the product from 1 to 5","In your own words, what did you like about the product?","Select Yes or No"],2],
+["Which is a Closed-Ended (CE) question?",["Explain your opinion in detail","What would you improve and why?","Describe your experience","How satisfied are you: Very satisfied / Satisfied / Neutral / Dissatisfied?"],3],
+["What is the main focus of B2C surveys?",["Business decision makers only","Consumer opinions, product usage and satisfaction","Only doctors","Only company revenue"],1],
+["Who are typical B2B respondents?",["Only school students","Professionals and business decision-makers","Only patients","Only children"],1],
+["Which is a valid B2B survey type?",["Customer feedback","Only weather forecasting","Only personal diary writing","Only school attendance"],0],
+["What is a key difference between B2B and B2C?",["B2B targets professionals; B2C targets consumers","B2B has no questions","B2C never uses quotas","B2B is always healthcare"],0],
+["Which is a typical Healthcare survey group?",["HCPs","Only software engineers","Only retail cashiers","Only drivers"],0],
+["What should you do with medical information in a healthcare study?",["Invent it if needed","Never fabricate it; provide truthful, profile-consistent information","Copy someone else's information","Always select the highest option"],1],
+["What is 'flat-lining'?",["Choosing the same response repeatedly on a rating scale without genuine consideration","Finishing a survey normally","Writing a detailed answer","Checking a quota"],0],
+["Why is speeding a quality concern?",["Because unrealistically fast completion can indicate poor engagement or trigger security controls","Because fast internet is illegal","Because every survey must take one hour","Because quotas disappear"],0],
+["What should you do if a survey link behaves incorrectly?",["Ignore it","Change answers until it works","Record the issue and report it through the approved error-reporting process","Delete the survey"],2],
+["Which is a good OE practice?",["Use gibberish","Copy the same answer everywhere","Be clear, relevant and genuine","Leave every answer blank"],2],
+["What is an official language?",["A language legally recognized for specified government functions, depending on the country","Always the most spoken home language","Always English","A secret company language"],0],
+["What is the main official/recognized language listed for Brazil in the training material?",["Spanish","Portuguese","French","English"],1],
+["Which language is associated with Japan in the training material?",["Japanese","Portuguese","Arabic","German"],0],
+["Which pair is listed for Canada?",["English & French","Spanish & Portuguese","German & Italian","Arabic & Hebrew"],0],
+["Which language is listed as the official/recognized language of Germany in the training material?",["French","German","Italian","Dutch"],1]
+];
+
+let slide=0,qi=0,score=0,answers=Array(qs.length).fill(null);
+let currentName="",nameEntered=false;
+const STORAGE_KEY="vornqisQuizAttempts";
+const slides=[...document.querySelectorAll(".slide")];
+
+function render(){slides.forEach((s,i)=>s.classList.toggle("active",i===slide));document.getElementById("count").textContent=`${slide+1} / ${slides.length}`;document.getElementById("bar").style.width=((slide+1)/slides.length*100)+"%"}
+function next(){if(slide<slides.length-1){slide++;render()}}
+function prev(){if(slide>0){slide--;render()}}
+function mode(m){
+ document.getElementById("presentation").style.display=m==="presentation"?"flex":"none";
+ document.getElementById("quiz").style.display=m==="quiz"?"flex":"none";
+ document.getElementById("pbtn").classList.toggle("active",m==="presentation");
+ document.getElementById("qbtn").classList.toggle("active",m==="quiz");
+ if(m==="quiz"){ nameEntered ? question() : showNameGate(); }
+ window.scrollTo({top:0,behavior:"smooth"})
+}
+
+// ---- name gate ----
+function showNameGate(){
+ document.getElementById("qcard").innerHTML=`
+  <div class="result">
+   <div class="kicker">Before You Start</div>
+   <h2>Enter Your Name</h2>
+   <p>Your name is used to track your score across attempts (1st, 2nd, etc.).</p>
+   <input id="nameInput" class="nameGateInput" type="text" placeholder="Your full name" />
+   <div><button class="primary" onclick="startQuizWithName()">Start Quiz →</button></div>
+  </div>`;
+ setTimeout(()=>{const el=document.getElementById("nameInput");if(el){el.focus();el.addEventListener("keydown",e=>{if(e.key==="Enter")startQuizWithName()})}},50);
+}
+function startQuizWithName(){
+ const el=document.getElementById("nameInput");
+ const val=el?el.value.trim():"";
+ if(!val){alert("Please enter your name to continue.");return}
+ currentName=val;nameEntered=true;
+ qi=0;score=0;answers=Array(qs.length).fill(null);
+ question();
+}
+
+// ---- attempt storage (per-browser, private to this viewer) ----
+function getAllAttempts(){
+ try{const raw=localStorage.getItem(STORAGE_KEY);return raw?JSON.parse(raw):{}}catch(e){return{}}
+}
+function saveAttempt(name,finalScore){
+ try{
+  const data=getAllAttempts();
+  if(!data[name])data[name]=[];
+  data[name].push({score:finalScore,total:qs.length,date:new Date().toISOString()});
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+  return data[name];
+ }catch(e){return[{score:finalScore,total:qs.length,date:new Date().toISOString()}]}
+}
+
+// ---- quiz flow ----
+function question(){
+ if(qi>=qs.length){result();return}
+ const [q,opts,c]=qs[qi],sel=answers[qi];let h=`<div class="qtop"><div class="qnum">QUESTION ${qi+1} OF ${qs.length}</div><span class="pill">${currentName?currentName+" · ":""}Score: ${score}/${qs.length}</span></div><h2 style="margin-top:20px">${q}</h2><div class="options">`;
+ opts.forEach((o,i)=>{let cl="";if(sel!==null){if(i===c)cl="correct";else if(i===sel)cl="wrong"}h+=`<button class="option ${cl}" onclick="answer(${i})"><strong>${String.fromCharCode(65+i)}.</strong> ${o}</button>`});
+ h+=`</div>`;if(sel!==null){const ok=sel===c;h+=`<div class="feedback ${ok?"ok":"bad"}">${ok?"✓ Correct!":"✗ Incorrect."} ${ok?"":"Correct answer: "+String.fromCharCode(65+c)+". "+opts[c]}</div>`}
+ h+=`<div class="actions">${qi>0?'<button class="secondary" onclick="prevQ()">← Previous</button>':''}${sel!==null?`<button class="primary" onclick="nextQ()">${qi===qs.length-1?"View Result":"Next Question →"}</button>`:""}</div>`;
+ document.getElementById("qcard").innerHTML=h;
+}
+function answer(i){if(answers[qi]!==null)return;answers[qi]=i;if(i===qs[qi][2])score++;question()}
+function nextQ(){if(qi<qs.length-1){qi++;question()}else result()}
+function prevQ(){if(qi>0){qi--;question()}}
+
+function result(){
+ const pct=Math.round(score/qs.length*100);
+ const band=pct>=90?"Excellent — Day 1 Mastery":pct>=75?"Strong — Keep Practising":pct>=60?"Good Start — Review Key Rules":"Needs Review — Retake the Training";
+ const attempts=saveAttempt(currentName,score);
+ const attemptCards=attempts.map((a,i)=>{
+  const p=Math.round(a.score/a.total*100);
+  const ord=i===0?"1st":i===1?"2nd":i===2?"3rd":`${i+1}th`;
+  return `<div class="card"><b>${ord} Attempt</b><p>${a.score}/${a.total} (${p}%)</p></div>`;
+ }).join("");
+ document.getElementById("qcard").innerHTML=`<div class="result">
+  <div class="kicker">Quiz Complete${currentName?" — "+currentName:""}</div>
+  <h2>Your Final Result</h2>
+  <div class="score">${score}/${qs.length}</div>
+  <div class="badge">${pct}% · ${band}</div>
+  <div class="attemptGrid">${attemptCards}</div>
+  <p style="margin-top:18px">Review any missed concepts, revisit the presentation and retry the quiz whenever you want.</p>
+  <button class="primary" onclick="retry()">↻ Retry Quiz</button>
+  <button class="secondary" style="margin-left:8px" onclick="mode('presentation')">← Review Presentation</button>
+  <button class="secondary" style="margin-left:8px" onclick="changeName()">Switch Name</button>
+ </div>`;
+}
+function retry(){qi=0;score=0;answers=Array(qs.length).fill(null);question()}
+function changeName(){nameEntered=false;currentName="";showNameGate()}
+
+document.addEventListener("keydown",e=>{if(document.getElementById("presentation").style.display!=="none"){if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev()}});
+render();
+</script>
+</body>
+</html>
